@@ -1,61 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ربات استخراج کلید همسترr</title>
+    <title>Генератор Ключей Hamster Kombat</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <div class="container">
-        <h1>ربات اسخراج کلید همستر</h1>
-        <div class="form-group">
-            <label for="gameSelect">بازی کلید را انتخاب کنید:</label>
+    <div class="language-selector">
+        <select id="languageSelect">
+            <option value="ru">Русский</option>
+            <option value="en">English</option>
+            
+            
+            <option value="ar">العربية</option>
+            <option value="fa">فارسی</option>
+            
+            
+            
+            <option value="hi">हिन्दी</option>
+            <option value="tr">Türkçe</option>
+            
+        </select>
+        
+    </div>
+    <div class="main-container">
+        <div class="container">
+            <h1>Генератор Ключей Hamster Kombat</h1>
+            <label for="gameSelect" id="gameSelectLabel">Выберите игру для генерации ключа:</label>
             <select id="gameSelect">
-                <option value="1">Riding Extreme 3D</option>
-                <option value="2">Chain Cube 2048</option>
-                <option value="3">My Clone Army</option>
-                <option value="4">Train Miner</option>
+                <option value="MyCloneArmy">My Clone Army</option>
+                <option value="ChainCube2048">Chain Cube 2048</option>
+                <option value="TrainMiner">Train Miner</option>
+                <option value="BikeRide3D">Bike Ride 3D</option>
             </select>
-        </div>
-        <div class="form-group">
-            <label for="keyCountSelect">مقدار کلید درخواستی را انتخاب کنید:</label>
+            <label for="keyCountSelect" id="keyCountLabel">Выберите количество ключей для генерации:</label>
             <select id="keyCountSelect">
                 <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
                 <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
             </select>
-        </div>
-        <button id="startBtn">استخراج کلید🔑</button>
-
-        <div id="progressContainer" class="hidden">
-            <div class="progress-bar">
-                <div id="progressBar"></div>
+            <button id="startBtn" class="button">Сгенерировать ключи</button>
+            <div id="progressContainer" class="progress-container hidden">
+                <div id="progressBar" class="progress-bar"></div>
+                <span id="progressText" class="progress-text">0%</span>
             </div>
-            <p id="progressText">0%</p>
-            <p id="progressLog">درحال استخراج... لطفا صبور بمانید</p>
+            <div id="keyContainer" class="key-container hidden">
+                <h2 id="generatedKeysTitle">Сгенерированные ключи:</h2>
+                <button id="copyAllBtn" class="button hidden">Скопировать все ключи</button>
+                <div id="keysList" class="keys-list"></div>
+            </div>
         </div>
-
-        <div id="keyContainer" class="hidden">
-            <h2 id="generatedKeysTitle" class="hidden">کلید های استخراج شده</h2>
-            <div id="keysList"></div>
-            <button id="copyAllBtn" class="hidden">کپی کردن تمامی کلید ها 🔑</button>
-        </div>
-
-        <p id="keyCountLabel">تعداد کل کلید ها:</p>
-
-        <button id="generateMoreBtn">استخراج کردن دوباره</button>
-        <button id="creatorChannelBtn">تماس با ما</button>
-        <p id="copyStatus" class="hidden">کلید ها کپی شدند!</p>
-
-        <div class="footer">
-            <p>برای استخراج شدن کلید باید مقداری صبر کنید.</p>
-            <button id="telegramChannelBtn">ورود به کانال تلگرام ما</button>
-        </div>
+        <button id="creatorChannelBtn" class="button footer-button">Powered by freeairdropland1</button>
     </div>
-
     <script src="script.js"></script>
 </body>
-
 </html>
