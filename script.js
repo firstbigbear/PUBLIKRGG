@@ -235,7 +235,7 @@ document.getElementById('startBtn').addEventListener('click', async () => {
 });
 
 document.getElementById('creatorChannelBtn').addEventListener('click', () => {
-    window.location.href = 'https://t.me/freeairdropland1';
+    window.location.href = 'https://t.me/pdosi_project';
 });
 
 function generateClientId() {
