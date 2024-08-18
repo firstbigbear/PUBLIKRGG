@@ -1,72 +1,76 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Генератор Ключей Hamster Kombat</title>
+    <title>ربات اختصاصی کلید ساز همستر</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="language-selector">
-        <select id="languageSelect">
-            <option value="ru">Русский</option>
-            <option value="en">English</option>
-            <option value="sr">Српски</option>
-            <option value="be">Беларуская</option>
-            <option value="ar">العربية</option>
-            <option value="fa">فارسی</option>
-            <option value="es">Español</option>
-            <option value="fr">Français</option>
-            <option value="de">Deutsch</option>
-            <option value="it">Italiano</option>
-            <option value="pt">Português</option>
-            <option value="zh">简体中文</option>
-            <option value="ja">日本語</option>
-            <option value="ko">한국어</option>
-            <option value="hi">हिन्दी</option>
-            <option value="tr">Türkçe</option>
-            <option value="pl">Polski</option>
-        </select>
-        
-    </div>
-    <div class="main-container">
-        <div class="container">
-            <h1>Генератор Ключей Hamster Kombat</h1>
-            <label for="gameSelect" id="gameSelectLabel">Выберите игру для генерации ключа:</label>
-            <select id="gameSelect">
-                <option value="MyCloneArmy">My Clone Army</option>
-                <option value="ChainCube2048">Chain Cube 2048</option>
-                <option value="TrainMiner">Train Miner</option>
-                <option value="BikeRide3D">Bike Ride 3D</option>
-            </select>
-            <label for="keyCountSelect" id="keyCountLabel">Выберите количество ключей для генерации:</label>
-            <select id="keyCountSelect">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-            </select>
-            <button id="startBtn" class="button">Сгенерировать ключи</button>
-            <div id="progressContainer" class="progress-container hidden">
-                <div id="progressBar" class="progress-bar"></div>
-                <span id="progressText" class="progress-text">0%</span>
+    <div class="container">
+        <h1>استخراج کلید همستر 👇</h1>
+        <div id="gameSelectContainer" class="grid-container">
+            <div class="game-option" data-game="6">
+                <img src="https://cdn.hamsterkombat.io/twerk/image.webp" alt="Twerk Race 3D">
+                <p>Twerk Race 3D</p>
             </div>
-            <div id="keyContainer" class="key-container hidden">
-                <h2 id="generatedKeysTitle">Сгенерированные ключи:</h2>
-                <button id="copyAllBtn" class="button hidden">Скопировать все ключи</button>
-                <div id="keysList" class="keys-list"></div>
+            <div class="game-option" data-game="5">
+                <img src="https://cdn.hamsterkombat.io/merge_away/image.webp" alt="Merge Away">
+                <p>Merge Away</p>
+            </div>
+            <div class="game-option" data-game="3">
+                <img src="https://cdn.hamsterkombat.io/my_clone_army/image.webp" alt="My Clone Army">
+                <p>My Clone Army</p>
+            </div>
+            <div class="game-option" data-game="2">
+                <img src="https://cdn.hamsterkombat.io/chain_cube/image.webp" alt="Chain Cube 2048">
+                <p>Chain Cube 2048</p>
+            </div>
+            <div class="game-option" data-game="4">
+                <img src="https://cdn.hamsterkombat.io/train_miner/image.webp" alt="Train Miner">
+                <p>Train Miner</p>
+            </div>
+            <div class="game-option" data-game="1">
+                <img src="https://cdn.hamsterkombat.io/bikeride/image.webp" alt="Bike Ride 3D">
+                <p>Bike Ride 3D</p>
             </div>
         </div>
-        <button id="creatorChannelBtn" class="button footer-button">Powered by Project PDoSI</button>
+
+        <div class="form-group hidden" id="keyCountGroup">
+            <label for="keyCountSelect">تعداد کلید را انتخاب کنید:</label>
+            <div id="keyCountSelect" class="key-slider">
+                <input type="range" min="1" max="10" value="1" id="keyRange">
+                <span id="keyValue">1</span>
+            </div>
+        </div>
+        <button id="startBtn" class="hidden">شروع استخراج</button>
+
+        <div id="progressContainer" class="hidden">
+            <div class="progress-bar">
+                <div id="progressBar"></div>
+            </div>
+            <p id="progressText">0%</p>
+            <p id="progressLog">درحال شروع...لطفا بین 30 ثانیه الی 2 دقیقه منتظر بمانید</p>
+        </div>
+
+        <div id="keyContainer" class="hidden">
+            <h2 id="generatedKeysTitle" class="hidden">کلید های استخراج شده</h2>
+            <div id="keysList"></div>
+            <button id="copyAllBtn" class="hidden">کپی همه</button>
+        </div>
+
+        <p id="keyCountLabel">تعداد کلید ها:</p>
+
+        <button id="generateMoreBtn" class="hidden">استخراج دوباره کلید</button>
+        <p id="copyStatus" class="hidden">کلید ها در کیبورد شما کپی شدند!</p>
+        
+        <div class="footer">
+            <p>این ربات کلید را مستقیم از سمت خود سرور همستر میگیرد. با ریسک خودتان استفاده کنید.</p>
+            <button id="sourceCode" onclick="window.location.href='https://t.me/FreeairdroplandSUP';">ارتباط با</button>
+        </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
