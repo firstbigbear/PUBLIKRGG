@@ -41,6 +41,13 @@ document.addEventListener('DOMContentLoaded', () => {
             promoId: '61308365-9d16-4040-8bb0-2f4a4c69074c',
             timing: 30000, // 30 seconds
             attempts: 20,
+        },
+        7: {
+            name: 'Polysphere',
+            appToken: '2aaf5aee-2cbc-47ec-8a3f-0962cc14bc71',
+            promoId: '2aaf5aee-2cbc-47ec-8a3f-0962cc14bc71',
+            timing: 20000, // 20 seconds
+            attempts: 20,
         }
     };
 
@@ -82,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
     startBtn.addEventListener('click', async () => {
         const keyCount = parseInt(keyRange.value);
         if (!selectedGame) {
-            alert('لطفا اول بازی را  انتخاب کنید..');
+            alert('لطفا اول یک بازی را انتخاب کنید.');
             return;
         }
 
@@ -120,26 +127,26 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 clientToken = await login(clientId, game.appToken);
             } catch (error) {
-                alert(`Failed to login: ${error.message}`);
+                alert(`فیلتر شکن خود را روشن کنید یا لوکیشن فیلترشکن خود را تغییر دهید. ${error.message}`);
                 startBtn.disabled = false;
                 return null;
             }
 
             for (let i = 0; i < game.attempts; i++) {
                 const hasCode = await emulateProgress(clientToken, game.promoId);
-                updateProgress((100 / game.attempts) / keyCount, `Emulating progress ${i + 1}/${game.attempts}...`);
+                updateProgress((100 / game.attempts) / keyCount, `درحال استخراج کلید لطفا 1  الی 5 دقیقه منتظر بمانید ${i + 1}/${game.attempts}...`);
                 if (hasCode) {
                     break;
                 }
-                await sleep(game.timing);  // بعد از هر بار تلاش یک بار ربات رو ببند . شاید هم از کانال ما لفت دادی.
+                await sleep(game.timing);  // Sleep after each attempt to wait before the next event registration
             }
 
             try {
                 const key = await generateKey(clientToken, game.promoId);
-                updateProgress(100 / keyCount, 'در حال استخراج کلید');
+                updateProgress(100 / keyCount, 'درحال استخراج...');
                 return key;
             } catch (error) {
-                alert(`مشکل از سمت همستره . یکم دیگه تلاش کن: ${error.message}`);
+                alert(`کلید رو نشد استخراج کنیم. دوباره امتحان کن: ${error.message}`);
                 return null;
             }
         };
@@ -179,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         progressBar.style.width = '100%';
         progressText.innerText = '100%';
-        progressLog.innerText = 'ساخته شد';
+        progressLog.innerText = 'Complete';
 
         startBtn.classList.remove('hidden');
         keyCountGroup.classList.remove('hidden');
