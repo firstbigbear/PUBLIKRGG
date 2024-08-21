@@ -17,7 +17,7 @@
         }
         .container {
             max-width: 400px; /* Set max-width for mobile view */
-            margin: 40px auto; /* Increased top margin for more space */
+            margin: 60px auto; /* Increased top margin for more space */
             padding: 20px;
             background: rgba(0, 0, 0, 0.7); /* Dark background for better readability */
             border-radius: 12px;
@@ -28,8 +28,12 @@
             text-align: center;
             color: #f39c12; /* Bright color for header */
             margin-bottom: 20px;
-            margin-top: 0; /* Remove top margin */
+            margin-top: 20px; /* Added margin to create space above the title */
             font-size: 2em; /* Adjusted header size for mobile */
+        }
+        .decorative-image {
+            width: 100%; /* Full width for decorative image */
+            margin-bottom: 20px; /* Space between image and title */
         }
         .grid-container {
             display: grid;
@@ -118,6 +122,8 @@
 </head>
 <body>
     <div class="container">
+        <!-- Decorative image above the title -->
+        <img src="https://cdn.hamsterkombat.io/decorative-hamster-image.png" alt="Hamster Decoration" class="decorative-image">
         <h1>استخراج کلید همستر 👇</h1>
         <div id="gameSelectContainer" class="grid-container">
             <div class="game-option" data-game="7">
