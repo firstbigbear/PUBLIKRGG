@@ -16,7 +16,7 @@
             padding: 0;
         }
         .container {
-            max-width: 800px;
+            max-width: 400px; /* Set max-width for mobile view */
             margin: 0 auto;
             padding: 20px;
             background: rgba(0, 0, 0, 0.7); /* Dark background for better readability */
@@ -28,21 +28,22 @@
             text-align: center;
             color: #f39c12; /* Bright color for header */
             margin-bottom: 20px;
-            font-size: 2.5em; /* Increased header size */
+            font-size: 2em; /* Adjusted header size for mobile */
         }
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            grid-template-columns: repeat(2, 1fr); /* Display two items per row */
             gap: 10px;
             margin-top: 20px;
         }
         .game-option {
             text-align: center;
-            padding: 15px;
+            padding: 10px;
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 8px;
             transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer; /* Indicate that it is clickable */
         }
         .game-option:hover {
             transform: scale(1.05);
@@ -59,6 +60,7 @@
         .key-slider {
             display: flex;
             align-items: center;
+            justify-content: center; /* Center the slider */
         }
         .key-slider input {
             flex: 1;
@@ -92,22 +94,23 @@
             background-color: #f39c12; /* Button color */
             color: #fff;
             border: none;
-            padding: 12px 24px;
+            padding: 10px 20px;
             border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.3s, transform 0.3s;
+            width: 100%; /* Full width for mobile */
         }
         .footer button:hover {
             background-color: #e67e22; /* Darker button color on hover */
             transform: scale(1.05);
         }
         /* Responsive adjustments */
-        @media (max-width: 600px) {
+        @media (max-width: 400px) {
             h1 {
-                font-size: 2em; /* Responsive header size */
+                font-size: 1.5em; /* Smaller header size for very small screens */
             }
             .grid-container {
-                grid-template-columns: 1fr; /* Single column layout on small screens */
+                grid-template-columns: 1fr; /* Single column layout on very small screens */
             }
         }
     </style>
