@@ -48,6 +48,20 @@ document.addEventListener('DOMContentLoaded', () => {
             promoId: '2aaf5aee-2cbc-47ec-8a3f-0962cc14bc71',
             timing: 20000, // 20 seconds
             attempts: 20,
+        },
+        8: {
+            name: 'Mow and Trim',
+            appToken: 'ef319a80-949a-492e-8ee0-424fb5fc20a6',
+            promoId: 'ef319a80-949a-492e-8ee0-424fb5fc20a6',
+            timing: 20000, // 20 seconds
+            attempts: 20,
+        },
+        9: {
+            name: 'Mud Racing',
+            appToken: '8814a785-97fb-4177-9193-ca4180ff9da8',
+            promoId: '8814a785-97fb-4177-9193-ca4180ff9da8',
+            timing: 20000, // 20 seconds
+            attempts: 20,
         }
     };
 
@@ -89,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
     startBtn.addEventListener('click', async () => {
         const keyCount = parseInt(keyRange.value);
         if (!selectedGame) {
-            alert('لطفا اول یک بازی را انتخاب کنید.');
+            alert('Please select a game first.');
             return;
         }
 
@@ -104,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         progressBar.style.width = '0%';
         progressText.innerText = '0%';
-        progressLog.innerText = 'Starting...';
+        progressLog.innerText = 'درحال استخراج... لطفا بین 1 الی 10 دقیقه صبر کنید';
         progressContainer.classList.remove('hidden');
         keyContainer.classList.add('hidden');
         generatedKeysTitle.classList.add('hidden');
@@ -127,14 +141,14 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 clientToken = await login(clientId, game.appToken);
             } catch (error) {
-                alert(`فیلتر شکن خود را روشن کنید یا لوکیشن فیلترشکن خود را تغییر دهید. ${error.message}`);
+                alert(`Failed to login: ${error.message}`);
                 startBtn.disabled = false;
                 return null;
             }
 
             for (let i = 0; i < game.attempts; i++) {
                 const hasCode = await emulateProgress(clientToken, game.promoId);
-                updateProgress((100 / game.attempts) / keyCount, `درحال استخراج کلید لطفا 1  الی 5 دقیقه منتظر بمانید ${i + 1}/${game.attempts}...`);
+                updateProgress((100 / game.attempts) / keyCount, `درحال استخراج... لطفا بین 1 الی 10 دقیقه صبر کنید ${i + 1}/${game.attempts}...`);
                 if (hasCode) {
                     break;
                 }
@@ -143,10 +157,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             try {
                 const key = await generateKey(clientToken, game.promoId);
-                updateProgress(100 / keyCount, 'درحال استخراج...');
+                updateProgress(100 / keyCount, 'درحال استخراج... لطفا بین 1 الی 10 دقیقه صبر کنید');
                 return key;
             } catch (error) {
-                alert(`کلید رو نشد استخراج کنیم. دوباره امتحان کن: ${error.message}`);
+                alert(`Failed to generate key: ${error.message}`);
                 return null;
             }
         };
@@ -157,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
             keysList.innerHTML = keys.filter(key => key).map(key =>
                 `<div class="key-item">
                     <input type="text" value="${key}" readonly>
-                    <button class="copyKeyBtn" data-key="${key}">Copy Key</button>
+                    <button class="copyKeyBtn" data-key="${key}">کپی</button>
                 </div>`
             ).join('');
             copyAllBtn.classList.remove('hidden');
@@ -165,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
             keysList.innerHTML =
                 `<div class="key-item">
                     <input type="text" value="${keys[0]}" readonly>
-                    <button class="copyKeyBtn" data-key="${keys[0]}">Copy Key</button>
+                    <button class="copyKeyBtn" data-key="${keys[0]}">کپی</button>
                 </div>`;
         }
 

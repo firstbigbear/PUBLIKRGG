@@ -1,6 +1,9 @@
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f5f7fa;
+    background-image: url('1722277621446.png'); /* Add the background image */
+    background-size: cover; /* Ensure the background image covers the entire body */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Do not repeat the background image */
     color: #333;
     display: flex;
     justify-content: center;
@@ -10,7 +13,7 @@ body {
 }
 
 .container {
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.8); /* Slightly transparent background for better readability */
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     padding: 30px;
@@ -25,6 +28,7 @@ h1 {
     color: #007bff;
 }
 
+/* Remaining styles unchanged */
 .grid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -82,7 +86,6 @@ label {
     border-radius: 5px;
     background: #ddd;
     outline: none;
-    transition: background 0.3s;
 }
 
 .key-slider input[type="range"]::-webkit-slider-thumb {
@@ -93,11 +96,6 @@ label {
     border-radius: 50%;
     background: #007bff;
     cursor: pointer;
-    transition: background 0.3s;
-}
-
-.key-slider input[type="range"]:hover::-webkit-slider-thumb {
-    background: #0056b3;
 }
 
 #keyValue {
@@ -132,7 +130,6 @@ button:hover {
     overflow: hidden;
     margin-top: 25px;
     height: 35px;
-    position: relative;
 }
 
 .progress-bar div {
@@ -170,7 +167,6 @@ button:hover {
     font-size: 16px;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s;
 }
 
 .copyKeyBtn:hover {
