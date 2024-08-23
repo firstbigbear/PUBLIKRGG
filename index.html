@@ -3,98 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hamster Key Generator🔑</title>
+    <title>Hamster Key Generator 🔑</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            padding-top: 60px; /* Space for fixed header */
-        }
-        /* Header Styles */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background-color: #ffffff;
-            padding: 10px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            z-index: 1000;
-            text-align: center;
-        }
-        h1 {
-            font-size: 1.8em;
-            margin: 0;
-            color: #333;
-        }
-        .container {
-            padding: 20px;
-        }
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        .game-option {
-            text-align: center;
-            padding: 15px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            transition: transform 0.3s;
-            cursor: pointer; /* Indicating that it's clickable */
-        }
-        .game-option img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-        .game-option:hover {
-            transform: scale(1.05);
-        }
-        .footer {
-            margin-top: 20px;
-            text-align: center;
-            font-size: 0.9em;
-            padding: 10px;
-            border-top: 1px solid #ccc;
-        }
-        /* New styles for the selected game display */
-        #selectedGame {
-            margin-top: 20px;
-            font-size: 1.2em;
-            font-weight: bold;
-            text-align: center;
-            color: #333;
-        }
-        /* Responsive adjustments */
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.5em;
-            }
-            .game-option {
-                padding: 10px;
-            }
-        }
-    </style>
 </head>
 <body>
-    <header>
-        <h1>Hamster Key Generator🔑</h1>
-    </header>
-
     <div class="container">
+        <h1>Hamster Key Generator 🔑</h1>
         <div id="gameSelectContainer" class="grid-container">
             <div class="game-option" data-game="9">
                 <img src="https://cdn.hamsterkombat.io/mud_racing/image.webp" alt="Mud Racing">
-                <p>Mud Racing(جدید)</p>
+                <p>Mud Racing (جدید)</p>
             </div>
             <div class="game-option" data-game="8">
                 <img src="https://cdn.hamsterkombat.io/mow_trim/image.webp" alt="Mow and Trim">
-                <p>Mow and Trim(جدید)</p>
+                <p>Mow and Trim (جدید)</p>
             </div>
             <div class="game-option" data-game="7">
                 <img src="https://cdn.hamsterkombat.io/polysphere/image.webp" alt="Polysphere">
@@ -126,9 +49,6 @@
             </div>
         </div>
 
-        <!-- New div to display the selected game -->
-        <div id="selectedGame" class="hidden">بازی انتخاب شده: <span id="selectedGameName"></span></div>
-
         <div class="form-group hidden" id="keyCountGroup">
             <label for="keyCountSelect">تعداد کلید هارا انتخاب کنید:</label>
             <div id="keyCountSelect" class="key-slider">
@@ -136,7 +56,9 @@
                 <span id="keyValue">1</span>
             </div>
         </div>
+        
         <button id="startBtn" class="hidden">شروع استخراج</button>
+        <p id="currentGame" class="hidden">Generating key for: <span id="gameName"></span></p>
 
         <div id="progressContainer" class="hidden">
             <div class="progress-bar">
@@ -153,7 +75,6 @@
         </div>
 
         <p id="keyCountLabel">تعداد کلید ها:</p>
-
         <button id="generateMoreBtn" class="hidden">Generate More Keys</button>
         <p id="copyStatus" class="hidden">Keys copied to clipboard!</p>
         
