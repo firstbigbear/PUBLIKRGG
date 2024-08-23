@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             for (let i = 0; i < game.attempts; i++) {
                 const hasCode = await emulateProgress(clientToken, game.promoId);
-                updateProgress((100 / game.attempts) / keyCount, `درحال استخراج... لطفا بین 1 الی 10 دقیقه صبر کنید ${i + 1}/${game.attempts}...`);
+                updateProgress((100 / game.attempts) / keyCount, `درحال استخراج... لطفا بین 1 الی 10 دقیقه صبر کنی ${i + 1}/${game.attempts}...`);
                 if (hasCode) {
                     break;
                 }
