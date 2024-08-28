@@ -62,6 +62,13 @@ document.addEventListener('DOMContentLoaded', () => {
             promoId: '8814a785-97fb-4177-9193-ca4180ff9da8',
             timing: 20000, // 20 seconds
             attempts: 20,
+        },
+        10: {
+            name: 'Cafe Dash',
+            appToken: 'bc0971b8-04df-4e72-8a3e-ec4dc663cd11',
+            promoId: 'bc0971b8-04df-4e72-8a3e-ec4dc663cd11',
+            timing: 20000, // 20 seconds
+            attempts: 20,
         }
     };
 
@@ -85,6 +92,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let selectedGame = null;
 
+    sourceCode.addEventListener('click', () => {
+        window.open('https://t.me/freeairdroplandSUP', '_blank');
+    });
+
     gameOptions.forEach(option => {
         option.addEventListener('click', () => {
             gameOptions.forEach(opt => opt.classList.remove('selected'));
@@ -103,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
     startBtn.addEventListener('click', async () => {
         const keyCount = parseInt(keyRange.value);
         if (!selectedGame) {
-            alert('Please select a game first.');
+            alert('اول بازی رو انتخاب کنید..');
             return;
         }
 
@@ -114,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.grid-container').style.display = 'none';
         keyCountGroup.style.display = 'none';
 
-        keyCountLabel.innerText = `تعداد کلید ها: ${keyCount}`;
+        keyCountLabel.innerText = `تعداد کلید ها:  ${keyCount}`;
 
         progressBar.style.width = '0%';
         progressText.innerText = '0%';
@@ -148,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             for (let i = 0; i < game.attempts; i++) {
                 const hasCode = await emulateProgress(clientToken, game.promoId);
-                updateProgress((100 / game.attempts) / keyCount, `درحال استخراج... لطفا بین 1 الی 10 دقیقه صبر کنی ${i + 1}/${game.attempts}...`);
+                updateProgress((100 / game.attempts) / keyCount, `درحال استخراج... لطفا بین 1 الی 10 دقیقه صبر کنید ${i + 1}/${game.attempts}...`);
                 if (hasCode) {
                     break;
                 }
@@ -160,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateProgress(100 / keyCount, 'درحال استخراج... لطفا بین 1 الی 10 دقیقه صبر کنید');
                 return key;
             } catch (error) {
-                alert(`Failed to generate key: ${error.message}`);
+                alert(`با فیلترشکن امتحان کنید یا ایپی خود را عوض کنید .  ${error.message}`);
                 return null;
             }
         };
@@ -171,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
             keysList.innerHTML = keys.filter(key => key).map(key =>
                 `<div class="key-item">
                     <input type="text" value="${key}" readonly>
-                    <button class="copyKeyBtn" data-key="${key}">کپی</button>
+                    <button class="copyKeyBtn" data-key="${key}">Copy Key</button>
                 </div>`
             ).join('');
             copyAllBtn.classList.remove('hidden');
@@ -179,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
             keysList.innerHTML =
                 `<div class="key-item">
                     <input type="text" value="${keys[0]}" readonly>
-                    <button class="copyKeyBtn" data-key="${keys[0]}">کپی</button>
+                    <button class="copyKeyBtn" data-key="${keys[0]}">Copy Key</button>
                 </div>`;
         }
 
