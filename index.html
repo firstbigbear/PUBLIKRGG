@@ -1,23 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa"> <!-- Changed to Persian -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hamster Key Generator</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet"> <!-- Added Vazirmatn font -->
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif; /* Apply the Persian font to the body */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+        .container {
+            max-width: 600px; /* Set maximum width for the container */
+            margin: 0 auto; /* Center the container */
+            padding: 20px; /* Add padding for mobile usability */
+            box-sizing: border-box; /* Include padding in width calculations */
+        }
+        h1, h2 {
+            font-weight: 700;
+            text-align: center; /* Center align text */
+        }
+        button {
+            font-family: 'Vazirmatn', sans-serif; /* Ensure buttons use the special font */
+            width: 100%; /* Make buttons full width */
+            padding: 10px; /* Add padding for better touch targets */
+            margin-top: 10px; /* Add margin for spacing */
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* Responsive grid */
+            gap: 10px; /* Space between grid items */
+        }
+        .game-option {
+            text-align: center; /* Center content in game options */
+            border: 1px solid #ccc; /* Add border for visibility */
+            border-radius: 5px; /* Rounded corners */
+            padding: 10px; /* Add padding */
+            transition: transform 0.2s; /* Smooth transition on hover */
+        }
+        .game-option:hover {
+            transform: scale(1.05); /* Slightly enlarge on hover */
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px; /* Reduce padding on smaller screens */
+            }
+            .game-option {
+                padding: 5px; /* Reduce padding within game options */
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <h1>Hamster Key Generator</h1>
         <div id="gameSelectContainer" class="grid-container">
+            <div class="game-option" data-game="12">
+                <img src="https://cdn.hamsterkombat.io/gangs_wars/image.webp" alt="Gangs Wars">
+                <p>Gangs Wars</p>
+            </div>
+            <div class="game-option" data-game="11">
+                <img src="https://cdn.hamsterkombat.io/zoopolis/image.webp" alt="Zoopolis">
+                <p>Zoopolis</p>
+            </div>
             <div class="game-option" data-game="10">
                 <img src="https://cdn.hamsterkombat.io/cafe_dash/image.webp" alt="Cafe Dash">
-                <p>Cafe Dash(جدید)</p>
-            </div>
-            <div class="game-option" data-game="9">
-                <img src="https://cdn.hamsterkombat.io/mud_racing/image.webp" alt="Mud Racing">
-                <p>Mud Racing</p>
+                <p>Cafe Dash</p>
             </div>
             <div class="game-option" data-game="8">
                 <img src="https://cdn.hamsterkombat.io/mow_trim/image.webp" alt="Mow and Trim">
@@ -42,10 +93,6 @@
             <div class="game-option" data-game="4">
                 <img src="https://cdn.hamsterkombat.io/train_miner/image.webp" alt="Train Miner">
                 <p>Train Miner</p>
-            </div>
-            <div class="game-option" data-game="1">
-                <img src="https://cdn.hamsterkombat.io/bikeride/image.webp" alt="Bike Ride 3D">
-                <p>Bike Ride 3D</p>
             </div>
         </div>
 
@@ -78,10 +125,8 @@
         <p id="copyStatus" class="hidden">Keys copied to clipboard!</p>
         
         <div class="footer">
-            <p>این ربات کلید را مستقیم از سمت خود سرور همستر میگیرد. با ریسک خودتان استفاده کنید. اگه توی کلید گرفتن مشکل دارید حتما فیلترشکن استفاده کنید یا ایپی خودتون رو تغییر بدید. از سوال در پیوی سازنده پرهیز کنید.</p>
-            <a href="https://t.me/freeairdroplandSUP" target="_blank">
-                <button id="sourceCode">ارتباط با سازنده</button>
-            </a>
+            <p>این ربات کلید را مستقیم از سمت خود سرور همستر میگیرد. با ریسک خودتان استفاده کنید.</p>
+            <button id="sourceCode">ارتباط با سازنده</button>
         </div>
     </div>
 

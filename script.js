@@ -69,6 +69,20 @@ document.addEventListener('DOMContentLoaded', () => {
             promoId: 'bc0971b8-04df-4e72-8a3e-ec4dc663cd11',
             timing: 20000, // 20 seconds
             attempts: 20,
+        },
+        11: {
+            name: 'Zoopolis',
+            appToken: 'b2436c89-e0aa-4aed-8046-9b0515e1c46b',
+            promoId: 'b2436c89-e0aa-4aed-8046-9b0515e1c46b',
+            timing: 20000, // 20 seconds
+            attempts: 20,
+        },
+        12: {
+            name: 'Gangs Wars',
+            appToken: 'b6de60a0-e030-48bb-a551-548372493523',
+            promoId: 'c7821fa7-6632-482c-9635-2bd5798585f9',
+            timing: 40000, // 40 seconds
+            attempts: 30,
         }
     };
 
@@ -92,6 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let selectedGame = null;
 
+    // Updated source code link
     sourceCode.addEventListener('click', () => {
         window.open('https://t.me/freeairdroplandSUP', '_blank');
     });
@@ -159,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             for (let i = 0; i < game.attempts; i++) {
                 const hasCode = await emulateProgress(clientToken, game.promoId);
-                updateProgress((100 / game.attempts) / keyCount, `درحال استخراج... لطفا بین 1 الی 10 دقیقه صبر کنید ${i + 1}/${game.attempts}...`);
+                updateProgress((100 / game.attempts) / keyCount, `درحال استخراج... ${i + 1}/${game.attempts}...`);
                 if (hasCode) {
                     break;
                 }
