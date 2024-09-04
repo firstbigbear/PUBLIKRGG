@@ -11,16 +11,15 @@
             font-family: 'Vazirmatn', sans-serif; /* Apply the Persian font to the body */
             margin: 0;
             padding: 0;
-            overflow-x: hidden;
-            background-color: #f5f5f5; /* Light background color */
+            background-color: #e9eff1; /* Light background color resembling Telegram */
         }
         .container {
-            max-width: 600px; /* Set maximum width for the container */
+            max-width: 400px; /* Set a smaller width for a mini app feel */
             margin: 20px auto; /* Center the container with top margin */
-            padding: 20px; /* Add padding for mobile usability */
+            padding: 20px; /* Add padding */
             background: white; /* White background for the container */
-            border-radius: 8px; /* Rounded corners */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Soft shadow */
             box-sizing: border-box; /* Include padding in width calculations */
             overflow-y: auto; /* Enable vertical scrolling if content overflows */
             max-height: 90vh; /* Limit the height of the container */
@@ -29,11 +28,12 @@
             font-weight: 700;
             text-align: center; /* Center align text */
             color: #333; /* Darker text color for better contrast */
+            margin: 10px 0; /* Add margin for spacing */
         }
         button {
             font-family: 'Vazirmatn', sans-serif; /* Ensure buttons use the special font */
             width: 100%; /* Make buttons full width */
-            padding: 10px; /* Add padding for better touch targets */
+            padding: 12px; /* Add padding for better touch targets */
             margin-top: 10px; /* Add margin for spacing */
             border: none; /* Remove default border */
             border-radius: 5px; /* Rounded corners */
@@ -41,15 +41,16 @@
             color: white; /* White text color */
             cursor: pointer; /* Pointer cursor on hover */
             transition: background-color 0.3s; /* Smooth transition */
+            font-size: 16px; /* Increase font size */
         }
         button:hover {
             background-color: #0056b3; /* Darken button on hover */
         }
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* Responsive grid */
-            gap: 15px; /* Space between grid items */
-            max-height: 300px; /* Limit the height of the grid container */
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Responsive grid */
+            gap: 10px; /* Space between grid items */
+            max-height: 250px; /* Limit the height of the grid container */
             overflow-y: auto; /* Enable vertical scrolling for game options */
         }
         .game-option {
@@ -65,7 +66,7 @@
             border-color: #007bff; /* Change border color on hover */
         }
         .form-group {
-            margin-top: 20px; /* Add space above the form group */
+            margin-top: 15px; /* Add space above the form group */
         }
         #progressContainer {
             margin-top: 20px; /* Add space above the progress container */
