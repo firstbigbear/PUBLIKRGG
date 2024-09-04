@@ -1,38 +1,56 @@
 <!DOCTYPE html>
-<html lang="fa"> <!-- Changed to Persian -->
+<html lang="fa"> <!-- Changed back to Persian -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hamster Key Generator</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet"> <!-- Added Vazirmatn font -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Vazirmatn', sans-serif; /* Apply the Persian font to the body */
-            margin: 0; /* Remove default margin */
-            padding: 0; /* Remove default padding */
-            overflow-x: hidden; /* Prevent horizontal scroll */
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-color: #f5f5f5; /* Light background color */
         }
         .container {
             max-width: 600px; /* Set maximum width for the container */
-            margin: 0 auto; /* Center the container */
+            margin: 20px auto; /* Center the container with top margin */
             padding: 20px; /* Add padding for mobile usability */
+            background: white; /* White background for the container */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
             box-sizing: border-box; /* Include padding in width calculations */
+            overflow-y: auto; /* Enable vertical scrolling if content overflows */
+            max-height: 90vh; /* Limit the height of the container */
         }
         h1, h2 {
             font-weight: 700;
             text-align: center; /* Center align text */
+            color: #333; /* Darker text color for better contrast */
         }
         button {
             font-family: 'Vazirmatn', sans-serif; /* Ensure buttons use the special font */
             width: 100%; /* Make buttons full width */
             padding: 10px; /* Add padding for better touch targets */
             margin-top: 10px; /* Add margin for spacing */
+            border: none; /* Remove default border */
+            border-radius: 5px; /* Rounded corners */
+            background-color: #007bff; /* Primary color */
+            color: white; /* White text color */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+        button:hover {
+            background-color: #0056b3; /* Darken button on hover */
         }
         .grid-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* Responsive grid */
-            gap: 10px; /* Space between grid items */
+            gap: 15px; /* Space between grid items */
+            max-height: 300px; /* Limit the height of the grid container */
+            overflow-y: auto; /* Enable vertical scrolling for game options */
         }
         .game-option {
             text-align: center; /* Center content in game options */
@@ -40,16 +58,35 @@
             border-radius: 5px; /* Rounded corners */
             padding: 10px; /* Add padding */
             transition: transform 0.2s; /* Smooth transition on hover */
+            background-color: #f9f9f9; /* Light background for game options */
         }
         .game-option:hover {
             transform: scale(1.05); /* Slightly enlarge on hover */
+            border-color: #007bff; /* Change border color on hover */
+        }
+        .form-group {
+            margin-top: 20px; /* Add space above the form group */
+        }
+        #progressContainer {
+            margin-top: 20px; /* Add space above the progress container */
+        }
+        .progress-bar {
+            background-color: #e0e0e0; /* Background color for progress bar */
+            border-radius: 5px; /* Rounded corners */
+            overflow: hidden; /* Hide overflow */
+        }
+        #progressBar {
+            height: 20px; /* Set height for the progress bar */
+            background-color: #007bff; /* Progress color */
+            width: 0; /* Initial width */
+            transition: width 0.3s; /* Smooth transition for width change */
         }
         @media (max-width: 600px) {
             .container {
-                padding: 10px; /* Reduce padding on smaller screens */
+                padding: 15px; /* Reduce padding on smaller screens */
             }
             .game-option {
-                padding: 5px; /* Reduce padding within game options */
+                padding: 8px; /* Reduce padding within game options */
             }
         }
     </style>
@@ -59,39 +96,39 @@
         <h1>Hamster Key Generator</h1>
         <div id="gameSelectContainer" class="grid-container">
             <div class="game-option" data-game="12">
-                <img src="https://cdn.hamsterkombat.io/gangs_wars/image.webp" alt="Gangs Wars">
-                <p>Gangs Wars(جدید)</p>
+                <img src="https://cdn.hamsterkombat.io/fluff/image.webp" alt="Fluff Crusade" width="100%">
+                <p>Fluff Crusade</p>
             </div>
             <div class="game-option" data-game="11">
-                <img src="https://cdn.hamsterkombat.io/zoopolis/image.webp" alt="Zoopolis">
-                <p>Zoopolis(جدید)</p>
+                <img src="https://cdn.hamsterkombat.io/zoopolis/image.webp" alt="Zoopolis" width="100%">
+                <p>Zoopolis</p>
             </div>
             <div class="game-option" data-game="10">
-                <img src="https://cdn.hamsterkombat.io/cafe_dash/image.webp" alt="Cafe Dash">
-                <p>Cafe Dash</p>
+                <img src="https://cdn.hamsterkombat.io/tile_trio/image.webp" alt="Tile Trio" width="100%">
+                <p>Tile Trio</p>
             </div>
             <div class="game-option" data-game="8">
-                <img src="https://cdn.hamsterkombat.io/mow_trim/image.webp" alt="Mow and Trim">
+                <img src="https://cdn.hamsterkombat.io/mow_trim/image.webp" alt="Mow and Trim" width="100%">
                 <p>Mow and Trim</p>
             </div>
             <div class="game-option" data-game="7">
-                <img src="https://cdn.hamsterkombat.io/polysphere/image.webp" alt="Polysphere">
+                <img src="https://cdn.hamsterkombat.io/polysphere/image.webp" alt="Polysphere" width="100%">
                 <p>Polysphere</p>
             </div>
             <div class="game-option" data-game="6">
-                <img src="https://cdn.hamsterkombat.io/twerk/image.webp" alt="Twerk Race 3D">
+                <img src="https://cdn.hamsterkombat.io/twerk/image.webp" alt="Twerk Race 3D" width="100%">
                 <p>Twerk Race 3D</p>
             </div>
             <div class="game-option" data-game="5">
-                <img src="https://cdn.hamsterkombat.io/merge_away/image.webp" alt="Merge Away">
+                <img src="https://cdn.hamsterkombat.io/merge_away/image.webp" alt="Merge Away" width="100%">
                 <p>Merge Away</p>
             </div>
             <div class="game-option" data-game="2">
-                <img src="https://cdn.hamsterkombat.io/chain_cube/image.webp" alt="Chain Cube 2048">
+                <img src="https://cdn.hamsterkombat.io/chain_cube/image.webp" alt="Chain Cube 2048" width="100%">
                 <p>Chain Cube 2048</p>
             </div>
             <div class="game-option" data-game="4">
-                <img src="https://cdn.hamsterkombat.io/train_miner/image.webp" alt="Train Miner">
+                <img src="https://cdn.hamsterkombat.io/train_miner/image.webp" alt="Train Miner" width="100%">
                 <p>Train Miner</p>
             </div>
         </div>
@@ -111,7 +148,7 @@
                 <div id="progressBar"></div>
             </div>
             <p id="progressText">0%</p>
-            <p id="progressLog">درحال استخراج... لطفا بین 1 الی 10 دقیقه صبر کنید</p>
+            <p id="progressLog">در حال استخراج...</p>
         </div>
 
         <div id="keyContainer" class="hidden">

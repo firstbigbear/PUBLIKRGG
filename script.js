@@ -4,84 +4,84 @@ document.addEventListener('DOMContentLoaded', () => {
             name: 'Riding Extreme 3D',
             appToken: 'd28721be-fd2d-4b45-869e-9f253b554e50',
             promoId: '43e35910-c168-4634-ad4f-52fd764a843f',
-            timing: 30000, // 30 seconds
+            timing: 30000,
             attempts: 25,
         },
         2: {
             name: 'Chain Cube 2048',
             appToken: 'd1690a07-3780-4068-810f-9b5bbf2931b2',
             promoId: 'b4170868-cef0-424f-8eb9-be0622e8e8e3',
-            timing: 30000, // 30 seconds
+            timing: 30000,
             attempts: 20,
         },
         3: {
             name: 'My Clone Army',
             appToken: '74ee0b5b-775e-4bee-974f-63e7f4d5bacb',
             promoId: 'fe693b26-b342-4159-8808-15e3ff7f8767',
-            timing: 180000, // 180 seconds
+            timing: 180000,
             attempts: 30,
         },
         4: {
             name: 'Train Miner',
             appToken: '82647f43-3f87-402d-88dd-09a90025313f',
             promoId: 'c4480ac7-e178-4973-8061-9ed5b2e17954',
-            timing: 30000, // 30 seconds
+            timing: 30000,
             attempts: 15,
         },
         5: {
             name: 'Merge Away',
             appToken: '8d1cc2ad-e097-4b86-90ef-7a27e19fb833',
             promoId: 'dc128d28-c45b-411c-98ff-ac7726fbaea4',
-            timing: 30000, // 30 seconds
+            timing: 30000,
             attempts: 25,
         },
         6: {
             name: 'Twerk Race 3D',
             appToken: '61308365-9d16-4040-8bb0-2f4a4c69074c',
             promoId: '61308365-9d16-4040-8bb0-2f4a4c69074c',
-            timing: 30000, // 30 seconds
+            timing: 30000,
             attempts: 20,
         },
         7: {
             name: 'Polysphere',
             appToken: '2aaf5aee-2cbc-47ec-8a3f-0962cc14bc71',
             promoId: '2aaf5aee-2cbc-47ec-8a3f-0962cc14bc71',
-            timing: 20000, // 20 seconds
+            timing: 20000,
             attempts: 20,
         },
         8: {
             name: 'Mow and Trim',
             appToken: 'ef319a80-949a-492e-8ee0-424fb5fc20a6',
             promoId: 'ef319a80-949a-492e-8ee0-424fb5fc20a6',
-            timing: 20000, // 20 seconds
+            timing: 20000,
             attempts: 20,
         },
         9: {
             name: 'Mud Racing',
             appToken: '8814a785-97fb-4177-9193-ca4180ff9da8',
             promoId: '8814a785-97fb-4177-9193-ca4180ff9da8',
-            timing: 20000, // 20 seconds
+            timing: 20000,
             attempts: 20,
         },
         10: {
-            name: 'Cafe Dash',
-            appToken: 'bc0971b8-04df-4e72-8a3e-ec4dc663cd11',
-            promoId: 'bc0971b8-04df-4e72-8a3e-ec4dc663cd11',
-            timing: 20000, // 20 seconds
+            name: 'Tile Trio',
+            appToken: 'e68b39d2-4880-4a31-b3aa-0393e7df10c7',
+            promoId: 'e68b39d2-4880-4a31-b3aa-0393e7df10c7',
+            timing: 20000,
             attempts: 20,
         },
         11: {
             name: 'Zoopolis',
             appToken: 'b2436c89-e0aa-4aed-8046-9b0515e1c46b',
             promoId: 'b2436c89-e0aa-4aed-8046-9b0515e1c46b',
-            timing: 20000, // 20 seconds
+            timing: 20000,
             attempts: 20,
         },
         12: {
-            name: 'Gangs Wars',
-            appToken: 'b6de60a0-e030-48bb-a551-548372493523',
-            promoId: 'c7821fa7-6632-482c-9635-2bd5798585f9',
-            timing: 40000, // 40 seconds
+            name: 'Fluff Crusade',
+            appToken: '112887b0-a8af-4eb2-ac63-d82df78283d9',
+            promoId: '112887b0-a8af-4eb2-ac63-d82df78283d9',
+            timing: 20000,
             attempts: 30,
         }
     };
@@ -106,9 +106,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let selectedGame = null;
 
-    // Updated source code link
     sourceCode.addEventListener('click', () => {
-        window.open('https://t.me/freeairdroplandSUP', '_blank');
+        window.open('https://t.me/freeairdroplandSUP', '_blank'); // Updated link
     });
 
     gameOptions.forEach(option => {
@@ -119,6 +118,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             keyCountGroup.classList.remove('hidden');
             startBtn.classList.remove('hidden');
+
+            // Smooth scroll to the key count group
+            keyCountGroup.scrollIntoView({ behavior: 'smooth', block: 'center' });
         });
     });
 
@@ -144,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         progressBar.style.width = '0%';
         progressText.innerText = '0%';
-        progressLog.innerText = 'درحال استخراج... لطفا بین 1 الی 10 دقیقه صبر کنید';
+        progressLog.innerText = 'در حال استخراج...';
         progressContainer.classList.remove('hidden');
         keyContainer.classList.add('hidden');
         generatedKeysTitle.classList.add('hidden');
@@ -174,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             for (let i = 0; i < game.attempts; i++) {
                 const hasCode = await emulateProgress(clientToken, game.promoId);
-                updateProgress((100 / game.attempts) / keyCount, `درحال استخراج... ${i + 1}/${game.attempts}...`);
+                updateProgress((100 / game.attempts) / keyCount, `در حال استخراج... ${i + 1}/${game.attempts}...`);
                 if (hasCode) {
                     break;
                 }
@@ -183,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             try {
                 const key = await generateKey(clientToken, game.promoId);
-                updateProgress(100 / keyCount, 'درحال استخراج... لطفا بین 1 الی 10 دقیقه صبر کنید');
+                updateProgress(100 / keyCount, 'در حال استخراج... لطفا بین 1 الی 10 دقیقه صبر کنید');
                 return key;
             } catch (error) {
                 alert(`با فیلترشکن امتحان کنید یا ایپی خود را عوض کنید .  ${error.message}`);
@@ -197,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
             keysList.innerHTML = keys.filter(key => key).map(key =>
                 `<div class="key-item">
                     <input type="text" value="${key}" readonly>
-                    <button class="copyKeyBtn" data-key="${key}">Copy Key</button>
+                    <button class="copyKeyBtn" data-key="${key}">کپی کلید</button>
                 </div>`
             ).join('');
             copyAllBtn.classList.remove('hidden');
@@ -205,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
             keysList.innerHTML =
                 `<div class="key-item">
                     <input type="text" value="${keys[0]}" readonly>
-                    <button class="copyKeyBtn" data-key="${keys[0]}">Copy Key</button>
+                    <button class="copyKeyBtn" data-key="${keys[0]}">کپی کلید</button>
                 </div>`;
         }
 
