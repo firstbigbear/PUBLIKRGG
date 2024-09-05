@@ -1,87 +1,137 @@
+function toggleTheme() {
+    const html = document.documentElement;
+    const themeIcon = document.getElementById('themeIcon');
+    
+    if (html.getAttribute('data-theme') === 'dark') {
+        html.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+    } else {
+        html.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+    }
+}
+
+function setTheme() {
+    const html = document.documentElement;
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        html.setAttribute('data-theme', 'dark');
+    } else if (savedTheme === 'light') {
+        html.removeAttribute('data-theme');
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        html.setAttribute('data-theme', 'dark');
+    }
+}
+
+// Call setTheme on page load
+// Call setTheme on page load
+document.addEventListener('DOMContentLoaded', () => {
+    setTheme();
+    const themeIcon = document.getElementById('themeIcon');
+    if (document.documentElement.getAttribute('data-theme') === 'dark') {
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+    }
+});
+
+// Listen for changes in system color scheme
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', setTheme);
+
 document.addEventListener('DOMContentLoaded', () => {
     const games = {
         1: {
             name: 'Riding Extreme 3D',
             appToken: 'd28721be-fd2d-4b45-869e-9f253b554e50',
             promoId: '43e35910-c168-4634-ad4f-52fd764a843f',
-            timing: 30000,
+            timing: 30000, // 30 seconds
             attempts: 25,
         },
         2: {
             name: 'Chain Cube 2048',
             appToken: 'd1690a07-3780-4068-810f-9b5bbf2931b2',
             promoId: 'b4170868-cef0-424f-8eb9-be0622e8e8e3',
-            timing: 30000,
+            timing: 30000, // 30 seconds
             attempts: 20,
         },
         3: {
             name: 'My Clone Army',
             appToken: '74ee0b5b-775e-4bee-974f-63e7f4d5bacb',
             promoId: 'fe693b26-b342-4159-8808-15e3ff7f8767',
-            timing: 180000,
+            timing: 180000, // 180 seconds
             attempts: 30,
         },
         4: {
             name: 'Train Miner',
             appToken: '82647f43-3f87-402d-88dd-09a90025313f',
             promoId: 'c4480ac7-e178-4973-8061-9ed5b2e17954',
-            timing: 30000,
+            timing: 30000, // 30 seconds
             attempts: 15,
         },
         5: {
             name: 'Merge Away',
             appToken: '8d1cc2ad-e097-4b86-90ef-7a27e19fb833',
             promoId: 'dc128d28-c45b-411c-98ff-ac7726fbaea4',
-            timing: 30000,
+            timing: 30000, // 30 seconds
             attempts: 25,
         },
         6: {
             name: 'Twerk Race 3D',
             appToken: '61308365-9d16-4040-8bb0-2f4a4c69074c',
             promoId: '61308365-9d16-4040-8bb0-2f4a4c69074c',
-            timing: 30000,
+            timing: 30000, // 30 seconds
             attempts: 20,
         },
         7: {
             name: 'Polysphere',
             appToken: '2aaf5aee-2cbc-47ec-8a3f-0962cc14bc71',
             promoId: '2aaf5aee-2cbc-47ec-8a3f-0962cc14bc71',
-            timing: 20000,
+            timing: 20000, // 20 seconds
             attempts: 20,
         },
         8: {
             name: 'Mow and Trim',
             appToken: 'ef319a80-949a-492e-8ee0-424fb5fc20a6',
             promoId: 'ef319a80-949a-492e-8ee0-424fb5fc20a6',
-            timing: 20000,
+            timing: 20000, // 20 seconds
             attempts: 20,
         },
         9: {
             name: 'Mud Racing',
             appToken: '8814a785-97fb-4177-9193-ca4180ff9da8',
             promoId: '8814a785-97fb-4177-9193-ca4180ff9da8',
-            timing: 20000,
+            timing: 20000, // 20 seconds
             attempts: 20,
         },
         10: {
             name: 'Tile Trio',
             appToken: 'e68b39d2-4880-4a31-b3aa-0393e7df10c7',
             promoId: 'e68b39d2-4880-4a31-b3aa-0393e7df10c7',
-            timing: 20000,
+            timing: 20000, // 20 seconds
             attempts: 20,
         },
         11: {
             name: 'Zoopolis',
             appToken: 'b2436c89-e0aa-4aed-8046-9b0515e1c46b',
             promoId: 'b2436c89-e0aa-4aed-8046-9b0515e1c46b',
-            timing: 20000,
+            timing: 20000, // 20 seconds
             attempts: 20,
         },
         12: {
             name: 'Fluff Crusade',
             appToken: '112887b0-a8af-4eb2-ac63-d82df78283d9',
             promoId: '112887b0-a8af-4eb2-ac63-d82df78283d9',
-            timing: 20000,
+            timing: 20000, // 40 seconds
+            attempts: 30,
+        },
+        13: {
+            name: 'Stone Age',
+            appToken: '04ebd6de-69b7-43d1-9c4b-04a6ca3305af',
+            promoId: '04ebd6de-69b7-43d1-9c4b-04a6ca3305af',
+            timing: 20000, // 40 seconds
             attempts: 30,
         }
     };
@@ -107,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let selectedGame = null;
 
     sourceCode.addEventListener('click', () => {
-        window.open('https://t.me/freeairdroplandSUP', '_blank'); // Updated link
+        window.open('https://t.me/freeairdroplandSUP', '_blank');
     });
 
     gameOptions.forEach(option => {
@@ -115,10 +165,10 @@ document.addEventListener('DOMContentLoaded', () => {
             gameOptions.forEach(opt => opt.classList.remove('selected'));
             option.classList.add('selected');
             selectedGame = option.dataset.game;
-
+    
             keyCountGroup.classList.remove('hidden');
             startBtn.classList.remove('hidden');
-
+    
             // Smooth scroll to the key count group
             keyCountGroup.scrollIntoView({ behavior: 'smooth', block: 'center' });
         });
@@ -131,7 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
     startBtn.addEventListener('click', async () => {
         const keyCount = parseInt(keyRange.value);
         if (!selectedGame) {
-            alert('اول بازی رو انتخاب کنید..');
+            alert('لطفا اول بازی را انتخاب کنید.');
             return;
         }
 
@@ -142,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.grid-container').style.display = 'none';
         keyCountGroup.style.display = 'none';
 
-        keyCountLabel.innerText = `تعداد کلید ها:  ${keyCount}`;
+        keyCountLabel.innerText = `تعداد کلید ها: ${keyCount}`;
 
         progressBar.style.width = '0%';
         progressText.innerText = '0%';
@@ -176,7 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             for (let i = 0; i < game.attempts; i++) {
                 const hasCode = await emulateProgress(clientToken, game.promoId);
-                updateProgress((100 / game.attempts) / keyCount, `در حال استخراج... ${i + 1}/${game.attempts}...`);
+                updateProgress((100 / game.attempts) / keyCount, `در حال استخراج... لطفا بین 1 الی 10 دقیقه صبر کنید ${i + 1}/${game.attempts}...`);
                 if (hasCode) {
                     break;
                 }
@@ -188,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateProgress(100 / keyCount, 'در حال استخراج... لطفا بین 1 الی 10 دقیقه صبر کنید');
                 return key;
             } catch (error) {
-                alert(`با فیلترشکن امتحان کنید یا ایپی خود را عوض کنید .  ${error.message}`);
+                alert(`با فیلترشکن امتحان کنید یا ایپی خود را عوض کنید . ${error.message}`);
                 return null;
             }
         };
@@ -199,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
             keysList.innerHTML = keys.filter(key => key).map(key =>
                 `<div class="key-item">
                     <input type="text" value="${key}" readonly>
-                    <button class="copyKeyBtn" data-key="${key}">کپی کلید</button>
+                    <button class="copyKeyBtn" data-key="${key}">Copy Key</button>
                 </div>`
             ).join('');
             copyAllBtn.classList.remove('hidden');
@@ -207,7 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
             keysList.innerHTML =
                 `<div class="key-item">
                     <input type="text" value="${keys[0]}" readonly>
-                    <button class="copyKeyBtn" data-key="${keys[0]}">کپی کلید</button>
+                    <button class="copyKeyBtn" data-key="${keys[0]}">Copy Key</button>
                 </div>`;
         }
 
@@ -256,7 +306,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (!response.ok) {
-            throw new Error('Failed to login');
+            throw new Error('با فیلترشکن امتحان کنید یا ایپی خود را عوض کنید .');
         }
 
         const data = await response.json();
@@ -298,7 +348,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (!response.ok) {
-            throw new Error('Failed to generate key');
+            throw new Error('با فیلترشکن امتحان کنید یا ایپی خود را عوض کنید .');
         }
 
         const data = await response.json();

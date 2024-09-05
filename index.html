@@ -1,148 +1,192 @@
 <!DOCTYPE html>
-<html lang="fa"> <!-- Changed back to Persian -->
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hamster Key Generator</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
-            font-family: 'Vazirmatn', sans-serif; /* Apply the Persian font to the body */
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
             margin: 0;
-            padding: 0;
-            background: url('1722277621446.png') no-repeat center center fixed; /* Use your specified background image */
-            background-size: cover; /* Cover the entire background */
+            padding: 20px;
         }
+
         .container {
-            max-width: 400px; /* Set a smaller width for a mini app feel */
-            margin: 20px auto; /* Center the container with top margin */
-            padding: 20px; /* Add padding */
-            background: rgba(255, 255, 255, 0.85); /* White background with reduced opacity */
-            border-radius: 10px; /* Rounded corners */
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Soft shadow */
-            box-sizing: border-box; /* Include padding in width calculations */
-            overflow-y: auto; /* Enable vertical scrolling if content overflows */
-            max-height: 90vh; /* Limit the height of the container */
+            width: 95%; /* Increased container size to a minimum of 95% */
+            max-width: 900px; /* Keep the max-width for larger screens */
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
-        h1, h2 {
-            font-weight: 700;
-            text-align: center; /* Center align text */
-            color: #333; /* Darker text color for better contrast */
-            margin: 10px 0; /* Add margin for spacing */
+
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+            font-size: 1.5em; /* Responsive font size */
         }
-        button {
-            font-family: 'Vazirmatn', sans-serif; /* Ensure buttons use the special font */
-            width: 100%; /* Make buttons full width */
-            padding: 12px; /* Add padding for better touch targets */
-            margin-top: 10px; /* Add margin for spacing */
-            border: none; /* Remove default border */
-            border-radius: 5px; /* Rounded corners */
-            background-color: #007bff; /* Primary color */
-            color: white; /* White text color */
-            cursor: pointer; /* Pointer cursor on hover */
-            transition: background-color 0.3s; /* Smooth transition */
-            font-size: 16px; /* Increase font size */
-        }
-        button:hover {
-            background-color: #0056b3; /* Darken button on hover */
-        }
+
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Responsive grid */
-            gap: 10px; /* Space between grid items */
-            max-height: 250px; /* Limit the height of the grid container */
-            overflow-y: auto; /* Enable vertical scrolling for game options */
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
         }
+
         .game-option {
-            text-align: center; /* Center content in game options */
-            border: 1px solid #ccc; /* Add border for visibility */
-            border-radius: 5px; /* Rounded corners */
-            padding: 10px; /* Add padding */
-            transition: transform 0.2s; /* Smooth transition on hover */
-            background-color: #f9f9f9; /* Light background for game options */
+            background: #e7f3fe;
+            border: 1px solid #b8daff;
+            border-radius: 5px;
+            padding: 10px;
+            text-align: center;
+            transition: transform 0.2s;
+            cursor: pointer; /* Indicate it's clickable */
+            max-width: 100%;
         }
+
         .game-option:hover {
-            transform: scale(1.05); /* Slightly enlarge on hover */
-            border-color: #007bff; /* Change border color on hover */
+            transform: scale(1.05);
         }
+
+        .game-option img {
+            max-width: 100%;
+            border-radius: 5px;
+            height: auto; /* Maintain aspect ratio */
+        }
+
         .form-group {
-            margin-top: 15px; /* Add space above the form group */
+            margin: 20px 0;
         }
-        #progressContainer {
-            margin-top: 20px; /* Add space above the progress container */
+
+        .key-slider {
+            display: flex;
+            align-items: center;
         }
+
+        .key-slider input[type="range"] {
+            margin-right: 10px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 15px 20px; /* Increased padding for larger touch targets */
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            width: 100%; /* Full width for better usability on mobile */
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .footer p {
+            margin: 10px 0;
+        }
+
         .progress-bar {
-            background-color: #e0e0e0; /* Background color for progress bar */
-            border-radius: 5px; /* Rounded corners */
-            overflow: hidden; /* Hide overflow */
+            background: #e0e0e0;
+            border-radius: 5px;
+            height: 20px;
+            margin: 20px 0;
+            overflow: hidden;
         }
+
         #progressBar {
-            height: 20px; /* Set height for the progress bar */
-            background-color: #007bff; /* Progress color */
-            width: 0; /* Initial width */
-            transition: width 0.3s; /* Smooth transition for width change */
+            background: #4CAF50;
+            height: 100%;
+            width: 0;
+            transition: width 0.4s ease;
         }
+
+        /* Responsive styles */
         @media (max-width: 600px) {
-            .container {
-                padding: 15px; /* Reduce padding on smaller screens */
+            .grid-container {
+                grid-template-columns: 1fr; /* Single column on small screens */
             }
-            .game-option {
-                padding: 8px; /* Reduce padding within game options */
+
+            button {
+                font-size: 14px; /* Slightly smaller font size for mobile */
+            }
+
+            h1 {
+                font-size: 1.25em; /* Responsive font size */
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Hamster Key Generator🔑</h1>
+        <h1>استخراج کلید</h1>
         <div id="gameSelectContainer" class="grid-container">
+            <div class="game-option" data-game="13">
+                <img src="https://cdn.hamsterkombat.io/stone_age/image.webp" alt="Stone Age">
+                <p>Stone Age</p>
+            </div>
             <div class="game-option" data-game="12">
-                <img src="https://cdn.hamsterkombat.io/fluff/image.webp" alt="Fluff Crusade" width="100%">
+                <img src="https://cdn.hamsterkombat.io/fluff/image.webp" alt="Fluff">
                 <p>Fluff Crusade</p>
             </div>
-            <div class="game-option" data-game="11">
-                <img src="https://cdn.hamsterkombat.io/zoopolis/image.webp" alt="Zoopolis" width="100%">
-                <p>Zoopolis</p>
-            </div>
             <div class="game-option" data-game="10">
-                <img src="https://cdn.hamsterkombat.io/tile_trio/image.webp" alt="Tile Trio" width="100%">
+                <img src="https://cdn.hamsterkombat.io/tile_trio/image.webp" alt="CafeDash">
                 <p>Tile Trio</p>
             </div>
+            <div class="game-option" data-game="11">
+                <img src="https://cdn.hamsterkombat.io/zoopolis/image.webp" alt="Zoopolis">
+                <p>Zoopolis</p>
+            </div>
             <div class="game-option" data-game="8">
-                <img src="https://cdn.hamsterkombat.io/mow_trim/image.webp" alt="Mow and Trim" width="100%">
+                <img src="https://cdn.hamsterkombat.io/mow_trim/image.webp" alt="Mow and Trim">
                 <p>Mow and Trim</p>
             </div>
             <div class="game-option" data-game="7">
-                <img src="https://cdn.hamsterkombat.io/polysphere/image.webp" alt="Polysphere" width="100%">
+                <img src="https://cdn.hamsterkombat.io/polysphere/image.webp" alt="Polysphere">
                 <p>Polysphere</p>
             </div>
             <div class="game-option" data-game="6">
-                <img src="https://cdn.hamsterkombat.io/twerk/image.webp" alt="Twerk Race 3D" width="100%">
+                <img src="https://cdn.hamsterkombat.io/twerk/image.webp" alt="Twerk Race 3D">
                 <p>Twerk Race 3D</p>
             </div>
             <div class="game-option" data-game="5">
-                <img src="https://cdn.hamsterkombat.io/merge_away/image.webp" alt="Merge Away" width="100%">
+                <img src="https://cdn.hamsterkombat.io/merge_away/image.webp" alt="Merge Away">
                 <p>Merge Away</p>
             </div>
             <div class="game-option" data-game="2">
-                <img src="https://cdn.hamsterkombat.io/chain_cube/image.webp" alt="Chain Cube 2048" width="100%">
+                <img src="https://cdn.hamsterkombat.io/chain_cube/image.webp" alt="Chain Cube 2048">
                 <p>Chain Cube 2048</p>
             </div>
             <div class="game-option" data-game="4">
-                <img src="https://cdn.hamsterkombat.io/train_miner/image.webp" alt="Train Miner" width="100%">
+                <img src="https://cdn.hamsterkombat.io/train_miner/image.webp" alt="Train Miner">
                 <p>Train Miner</p>
             </div>
         </div>
 
         <div class="form-group hidden" id="keyCountGroup">
-            <label for="keyCountSelect">تعداد کلید هارا انتخاب کنید:</label>
+            <label for="keyCountSelect">تعداد کلید هارو انتخاب کنید:</label>
             <div id="keyCountSelect" class="key-slider">
                 <input type="range" min="1" max="4" value="1" id="keyRange">
                 <span id="keyValue">1</span>
             </div>
         </div>
-        
         <button id="startBtn" class="hidden">شروع استخراج</button>
 
         <div id="progressContainer" class="hidden">
@@ -150,22 +194,24 @@
                 <div id="progressBar"></div>
             </div>
             <p id="progressText">0%</p>
-            <p id="progressLog">در حال استخراج...</p>
+            <p id="progressLog">Starting...</p>
         </div>
 
         <div id="keyContainer" class="hidden">
             <h2 id="generatedKeysTitle" class="hidden">کلید های استخراج شده</h2>
             <div id="keysList"></div>
-            <button id="copyAllBtn" class="hidden">کپی کردن همه کلید ها</button>
+            <button id="copyAllBtn" class="hidden">کپی تمامی کلید ها</button>
         </div>
 
-        <p id="keyCountLabel">تعداد کلید ها:</p>
+        <p id="keyCountLabel">تعداد کلید:</p>
+
         <button id="generateMoreBtn" class="hidden">استخراج دوباره</button>
-        <p id="copyStatus" class="hidden">Keys copied to clipboard!</p>
+        <p id="copyStatus" class="hidden">کپی شد!</p>
         
         <div class="footer">
             <p>این ربات کلید را مستقیم از سمت خود سرور همستر میگیرد. با ریسک خودتان استفاده کنید.</p>
-            <button id="sourceCode">ارتباط با سازنده</button>
+            <button id="sourceCode">Source code</button>
+            <button id="themeToggleBtn" onclick="toggleTheme()"><i id="themeIcon" class="fas fa-sun"></i></button>
         </div>
     </div>
 
